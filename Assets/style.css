@@ -8,4 +8,11 @@ h1 {
 .direction {
     text-align: center;
 }
+#questions {
+    text-align: center;
+}
+
+#choices {
+    align-items: center;
+}
 

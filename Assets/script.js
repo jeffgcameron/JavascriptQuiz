@@ -6,25 +6,26 @@ var main = document.querySelector("#main");
 var question = document.querySelector("#question");
 var choices = document.querySelector("#choices");
 
+var currentQuestion = 0;
 var timer;
 var timerCount;
 
-//Create unordered list for each questions with answer options in an array
+//Create  list for each questions with answer options in an array
 var quizQuestions = [
     {
-        question: "What is the skeleton of all websites",
-        choices: ["HTML", "CSS", "Javascript"],
-        answer: "HTML",
+        question: "What is my favorite hobby",
+        choices: ["Skiing", "Mountain Biking", "Roller Blading"],
+        answer: "Skiing",
     },
     {
-        question: "What is my name",
-        choices: ["jeff", "joe", "john"],
-        answer: "jeff",
+        question: "Where was I born?",
+        choices: ["Boston", "NYC", "Philly"],
+        answer: "NYC",
     },
     {
-        question: "What is my last name",
-        choices: ["cam", "carm", "cameron"],
-        answer: "cameron"
+        question: "What is my favorite football team?",
+        choices: ["Patriots", "Bills", "Bucs"],
+        answer: "Patriots"
     }
 ]
 
@@ -62,4 +63,4 @@ startTimer.addEventListener("click", function startTimer() {
 
 //if timer gets to 0, say, "you lose"
 
-//function to stoe 
+//function to store 
