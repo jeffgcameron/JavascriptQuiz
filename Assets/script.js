@@ -1,14 +1,14 @@
 //create varables to start timer when the start game button is pressed
 var timerEl = document.querySelector("#timer");
-var startQuiz = document.querySelector("#start-button");
-var startTimer = document.querySelector("#start-button");
+var quiz = document.querySelector("#start-button");
+var timer = document.querySelector("#start-button");
 var main = document.querySelector("#main");
 var question = document.querySelector("#question");
 var choices = document.querySelector("#choices");
 
 var currentQuestion = 0;
 var timer;
-var timerCount;
+var timerCount = 60;
 
 //Create  list for each questions with answer options in an array
 var quizQuestions = [
@@ -29,38 +29,55 @@ var quizQuestions = [
     }
 ]
 
+quiz.addEventListener("click", function hideButton() {
+    main.style.display = "none"
+})
 
-//start the quiz once the start button is pressed. Hide original content and show the first question.
-startQuiz.addEventListener("click", function startQuiz() {
-    main.style.display = "none";
+quiz.addEventListener("click", function showQuestion() {
     var currentQuestion = 0;
-        question.textContent = quizQuestions[currentQuestion].question;
-        quizQuestions[currentQuestion].choices.forEach(function(choice) {
-            var listOfChoices = document.createElement("button");
-            listOfChoices.textContent = choice;
-            choices.appendChild(listOfChoices);
+    question.textContent = quizQuestions[currentQuestion].question;
+    quizQuestions[currentQuestion].choices.forEach(function(choice) {
+        var button = document.createElement("button");
+        button.textContent = choice
+        choices.appendChild(button)
+        button.addEventListener("click", function workingFunction() {
+            console.log("working");
+            console.log(button.textContent);
+            if (button.textContent === quizQuestions[currentQuestion].answer) {
+                currentQuestion++;
+                question.textContent = quizQuestions[currentQuestion].question;
+                
+                // for (var i = 0; i < quizQuestions[currentQuestion].choices.length; i++) {
+                //     button.textContent = quizQuestions[currentQuestion].choices
+                // }
+
+                quizQuestions[currentQuestion].choices.forEach(function(choice) {
+                    var button = document.createElement("button");
+                    button.textContent = choice;
+                    choices.appendChild(button);
+                })
+                console.log(quizQuestions[currentQuestion].choices.length);
+                console.log("correct");
+            }
         });
-    })
+    }) 
+})
 
 
-//when start button is pressed, start the timer
-startTimer.addEventListener("click", function startTimer() {
+// var currentQuestion = 0;
+
+timer.addEventListener("click", function startTimer() {
     timer = setInterval(function () {
-        timerCount = 60;
         timerCount--;
         timerEl.textContent = timerCount;
+        // if (timerCount === 0) {
+        //     window.alert("you lose")
+        // }
     }, 1000);
+
 });
 
-
-//once the first question is chosen correctly, hid first question and show second question
-
-//once the second question is chose correctly, hide the second questions and show the third question
-
-//once the third question is answer correctly, show the score and save to the highscore tab
-
-//if incorrect answer is chosen, reduce time by 5 seconds
-
-//if timer gets to 0, say, "you lose"
-
-//function to store 
+function askQuestion() {
+    
+}
+// quiz.addEventListener("click", startQuiz());
