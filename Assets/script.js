@@ -7,8 +7,11 @@ var question = document.querySelector("#question");
 var choices = document.querySelector("#choices");
 var score = document.querySelector("#score");
 var wrong = document.querySelector("#wrong");
-var win = document.querySelector("h1")
-var startAgain = document.querySelector("#start-again")
+var win = document.querySelector("h1");
+var tryAgain = document.querySelector("#try-again");
+var formEl = document.querySelector("#form");
+var input = document.querySelector("#input");
+var submit = document.querySelector("#submit");
 
 var currentQuestion = 0;
 var timer;
@@ -17,7 +20,7 @@ var timerCount = 60;
 //Create  list for each questions with answer options in an array
 var quizQuestions = [
     {
-        question: "What is my favorite hobby",
+        question: "What is my favorite hobby?",
         choices: ["Skiing", "Mountain Biking", "Roller Blading"],
         answer: "Skiing",
     },
@@ -42,6 +45,8 @@ quiz.addEventListener("click", function showQuestion() {
     question.textContent = quizQuestions[currentQuestion].question;
     quizQuestions[currentQuestion].choices.forEach(function(choice) {
         var button = document.createElement("button");
+        button.classList.add("clickme")
+        button.classList.add("row")
         button.textContent = choice
         choices.appendChild(button)
         button.addEventListener("click", function workingFunction() {
@@ -54,6 +59,8 @@ quiz.addEventListener("click", function showQuestion() {
                 wrong.innerHTML = "";
                 quizQuestions[currentQuestion].choices.forEach(function(choice) {
                     var button = document.createElement("button");
+                    button.classList.add("clickme")
+                    button.classList.add("row")
                     button.textContent = choice;
                     choices.appendChild(button);
                     button.addEventListener("click", function againFunction() {
@@ -67,6 +74,8 @@ quiz.addEventListener("click", function showQuestion() {
                             wrong.innerHTML = "";
                             quizQuestions[currentQuestion].choices.forEach(function(choice) {
                                 var button = document.createElement("button");
+                                button.classList.add("clickme")
+                                button.classList.add("row")
                                 button.textContent = choice;
                                 choices.appendChild(button);
                                 button.addEventListener("click", function finalFunction() {
@@ -103,19 +112,38 @@ function endGame() {
     question.innerHTML = "";
     win.textContent = "YOU WIN!"
     score.textContent = "Score: " + timerCount;
+    stopTimer();
     timerEl.textContent = "Winner Winner Chicken Dinner!!!"
+    input.textContent = "Write your name here:"
+    var form = document.createElement("INPUT"); 
+    form.setAttribute("type", "text");
+    form.classList.add("username")
+    formEl.appendChild(form)
+    var submitButton = document.createElement("button");
+    submitButton.classList.add("submitme")
+    submit.appendChild(submitButton)
+    submitButton.textContent = "Submit"
+    submitButton.addEventListener("click", function submitName() {
+        console.log("submit");
+        var input = document.querySelector(".username");
+        localStorage.setItem("name", input.value);
 
+    })
 }
+
+
+
 
 function loseGame() {
     choices.innerHTML = "";
     wrong.innerHTML = ""
     question.innerHTML = "";
     win.textContent = "YOU LOSE!!"
+    tryAgain.textContent = "Play Again"
     stopTimer()
 }
 function stopTimer() {
-    clearInterval(timerCount)
+    clearInterval(timer)
 }
 
 timer.addEventListener("click", function startTimer() {
@@ -123,7 +151,7 @@ timer.addEventListener("click", function startTimer() {
         timerCount--;
         timerEl.textContent = timerCount;
         if (timerCount < 1) {
-            timerEl.textContent = "Luhooo zaher!!";
+            timerEl.textContent = "Loser!!";
             stopTimer();
             loseGame();
         } 
@@ -131,4 +159,3 @@ timer.addEventListener("click", function startTimer() {
 
 });
 
-// quiz.addEventListener("click", startQuiz());

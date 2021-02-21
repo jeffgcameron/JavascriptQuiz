@@ -1,18 +1,143 @@
+body {
+    background-color: rgb(223, 223, 223); 
+}
+header {
+    background-color: rgb(141, 48, 5);
+    height: 50px;
+}
+
+a:link {
+    text-decoration: none;
+} 
+.high {
+    
+    padding-left: 30px;
+    padding-top: 10px;
+    color: rgb(223, 223, 223);
+    font-family: 'Gugi';
+}
+
 #timer {
     float: right;
+    padding-right: 30px;
+    padding-top: 10px;
+    color: rgb(223, 223, 223);
+    font-family: 'Gugi';
 }
+
 h1 {
+    padding-top: 75px;
     text-align: center;
+    font-family: 'Gugi';
+    font-size: 65px;
+    color: rgb(141, 48, 5);
+    font-weight: bold;
 }
 
 .direction {
     text-align: center;
+    font-size: 50px;
+    font-family: 'Gugi';
+    padding-top: 10px;
+    color: rgb(141, 48, 5);
 }
-#questions {
+
+#start-button {
+color: rgb(223, 223, 223);
+background-color: rgb(141, 48, 5);
+border-style: none;
+font-family: 'Gugi';
+width: 250px;
+height: 50px;
+font-size: 25px;
+border-radius: 10px;
+}
+
+#question {
     text-align: center;
+    font-size: 50px;
+    font-family: 'Gugi';
+    padding-top: 10px;
+    color: rgb(141, 48, 5);
+}
+
+.clickme {
+    text-align: center;
+    font-size: 25px;
+    width: 250px;
+    height: 50px;
+    font-family: 'Gugi';
+    background-color: rgb(141, 48, 5);
+    color: rgb(223, 223, 223);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    border-style: none;
+}
+
+#wrong {
+    font-family: 'Gugi';
+    color: rgb(141, 48, 5);
+    text-align: center;
+    margin-top: 10px;
+}
+
+#try-again {
+    color: rgb(141, 48, 5);
+    text-align: center;
+    font-family: 'Gugi';
+    font-size: 30px;
 }
 
 #choices {
     align-items: center;
 }
+
+#score {
+    font-family: 'Gugi';
+    color: rgb(141, 48, 5);
+    text-align: center;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+#input {
+    font-family: 'Gugi';
+    color: rgb(141, 48, 5);
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+#form {
+    text-align: center;
+}
+
+.submitme {
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Gugi';
+    background-color: rgb(141, 48, 5);
+    color: rgb(223, 223, 223);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    border-radius: 10px;
+    border-style: none;
+}
+
+.username {
+    text-align: center;
+    font-family: 'Gugi';
+    border-color: rgb(141, 48, 5);
+    outline: 0;
+    border-radius: 10px;
+    border-width: medium;
+    
+}
+
 
