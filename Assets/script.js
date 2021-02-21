@@ -5,6 +5,10 @@ var timer = document.querySelector("#start-button");
 var main = document.querySelector("#main");
 var question = document.querySelector("#question");
 var choices = document.querySelector("#choices");
+var score = document.querySelector("#score");
+var wrong = document.querySelector("#wrong");
+var win = document.querySelector("h1")
+var startAgain = document.querySelector("#start-again")
 
 var currentQuestion = 0;
 var timer;
@@ -46,38 +50,85 @@ quiz.addEventListener("click", function showQuestion() {
             if (button.textContent === quizQuestions[currentQuestion].answer) {
                 currentQuestion++;
                 question.textContent = quizQuestions[currentQuestion].question;
-                
-                // for (var i = 0; i < quizQuestions[currentQuestion].choices.length; i++) {
-                //     button.textContent = quizQuestions[currentQuestion].choices
-                // }
-
+                choices.innerHTML = "";
+                wrong.innerHTML = "";
                 quizQuestions[currentQuestion].choices.forEach(function(choice) {
                     var button = document.createElement("button");
                     button.textContent = choice;
                     choices.appendChild(button);
+                    button.addEventListener("click", function againFunction() {
+                        console.log("yeah buddy");
+                        console.log(button.textContent);
+                        if (button.textContent === quizQuestions[currentQuestion].answer) {
+                            console.log("yeahhhhhh");
+                            currentQuestion++;
+                            question.textContent = quizQuestions[currentQuestion].question;
+                            choices.innerHTML = "";
+                            wrong.innerHTML = "";
+                            quizQuestions[currentQuestion].choices.forEach(function(choice) {
+                                var button = document.createElement("button");
+                                button.textContent = choice;
+                                choices.appendChild(button);
+                                button.addEventListener("click", function finalFunction() {
+                                    console.log("final one");
+                                    console.log(button.textContent);
+                                    if (button.textContent === quizQuestions[currentQuestion].answer) {
+                                        endGame()
+                                    } else {
+                                        timerCount = timerCount -10;
+                                        wrong.textContent = "WRONG! Try Again!"
+                                    }
+                                })
+                            })
+                        } else {
+                            timerCount = timerCount -10;
+                            wrong.textContent = "WRONG! Try Again!"
+                        }
+                    })
+                    
                 })
-                console.log(quizQuestions[currentQuestion].choices.length);
-                console.log("correct");
+            } else {
+                timerCount = timerCount -10;
+                wrong.textContent = "WRONG! Try Again!"
             }
         });
     }) 
 })
 
+function endGame() {
+    console.log("you win!");
+    console.log(timerCount);
+    choices.innerHTML = "";
+    wrong.innerHTML = ""
+    question.innerHTML = "";
+    win.textContent = "YOU WIN!"
+    score.textContent = "Score: " + timerCount;
+    timerEl.textContent = "Winner Winner Chicken Dinner!!!"
 
-// var currentQuestion = 0;
+}
+
+function loseGame() {
+    choices.innerHTML = "";
+    wrong.innerHTML = ""
+    question.innerHTML = "";
+    win.textContent = "YOU LOSE!!"
+    stopTimer()
+}
+function stopTimer() {
+    clearInterval(timerCount)
+}
 
 timer.addEventListener("click", function startTimer() {
     timer = setInterval(function () {
         timerCount--;
         timerEl.textContent = timerCount;
-        // if (timerCount === 0) {
-        //     window.alert("you lose")
-        // }
+        if (timerCount < 1) {
+            timerEl.textContent = "Luhooo zaher!!";
+            stopTimer();
+            loseGame();
+        } 
     }, 1000);
 
 });
 
-function askQuestion() {
-    
-}
 // quiz.addEventListener("click", startQuiz());
