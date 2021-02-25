@@ -89,6 +89,7 @@ border-radius: 10px;
     text-align: center;
     font-family: 'Gugi';
     font-size: 30px;
+    margin-top: 50px;
 }
 
 #choices {
@@ -137,7 +138,16 @@ border-radius: 10px;
     outline: 0;
     border-radius: 10px;
     border-width: medium;
-    
 }
+
+.score {
+    font-family: 'Gugi';
+    color: rgb(141, 48, 5);
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
 
 
