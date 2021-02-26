@@ -149,5 +149,9 @@ border-radius: 10px;
     font-size: 20px;
 }
 
+li {
+    list-style: none;
+    list-style-image: none;
+}
 
 

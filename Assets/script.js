@@ -82,7 +82,6 @@ quiz.addEventListener("click", function showQuestion() {
                                     console.log("final one");
                                     console.log(button.textContent);
                                     if (button.textContent === quizQuestions[currentQuestion].answer) {
-                                        // localStorage.setItem("score", timerCount);
                                         endGame()
                                     } else {
                                         timerCount = timerCount -10;
@@ -126,15 +125,24 @@ function endGame() {
     submitButton.textContent = "Submit"
     submitButton.addEventListener("click", function submitName() {
         console.log("submit");
-        var input = document.querySelector(".username");
-        localStorage.setItem("name", JSON.stringify(input.value));
+        // var input = document.querySelector(".username");
+        // localStorage.setItem("name", JSON.stringify(input.value));
         setScore();
     })
     tryAgain.textContent = "Play Again"
 }
 
 function setScore() {
-    localStorage.setItem("score", JSON.stringify(timerCount))
+    // localStorage.setItem("score", JSON.stringify(timerCount))
+    var input = document.querySelector(".username");
+    var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+    var newRecord = {
+        name: input.value,
+        score: timerCount
+    }
+    highscores.push(newRecord);
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+    window.location.href = "highscores.html";
 }
 
 function loseGame() {
